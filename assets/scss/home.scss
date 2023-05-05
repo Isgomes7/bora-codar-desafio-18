@@ -1,0 +1,136 @@
+@import "mixin";
+@import "var";
+
+body {
+    background: linear-gradient(102.32deg, #030422 -2.74%, #090114 101.6%);
+}
+
+main {
+    .container {
+        @include flex(center, center, column);
+        height: 100vh;
+
+        @include bp(max-width, $bp-medium) {
+            height: 100%;
+        }
+    }
+
+    .wrapper {
+        @include flex(center, center);
+        width: 100%;
+
+        .card {
+            background: url("../images/background-card.png") no-repeat;
+            background-size: cover;
+            @include flex(center);
+            width: 100%;
+            max-width: 436px;
+            min-height: 608px;
+            padding-left: $trim;
+            position: relative;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border-radius: $trim-small + 1px;
+
+            .title {
+                max-width: 263px;
+
+                h1 {
+                    @include text('', $c-white-02, '', 700, 32px);
+                    line-height: 40px;
+                    text-shadow: 2px 1px $trim $c-white-02;
+                }
+
+                p {
+                    @include text('', $c-white-03, '', 400);
+                    line-height: $trim-small + 3px;
+                    opacity: .6;
+                    margin-top: $trim-small + 1px;
+                }
+            }
+
+            ul {
+                @include flex('', '', column, 16px);
+                margin-top: $large + $gap;
+
+                li {
+                    @include flex('', '', column, $gap);
+
+                    h2 {
+                        @include text('', $c-purple, '', 400);
+                        line-height: $trim-small + 3px;
+                    }
+
+                    span {
+                        @include text('', $c-white-03, '', 700);
+                        line-height: $trim-small + 3px;
+                        max-width: 198px;
+                    }
+                }
+            }
+
+            img {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+            }
+
+            &:hover {
+                opacity: .85;
+            }
+
+            @include bp(max-width, $bp-medium) {
+                max-width: 100%;
+            }
+        }
+
+        .card-opacity:first-child {
+            background: url("../images/card-01.png") no-repeat;
+            background-size: cover;
+            border-radius: 16px 16px 0 0;
+
+            @include bp(max-width, $bp-medium) {
+                border-radius: $trim-small + 1px;
+            }
+        }
+
+        .card-opacity:last-child {
+            background: url("../images/card-02.png") no-repeat;
+            background-size: cover;
+            border-radius: 0 0 16px 16px;
+
+            @include bp(max-width, $bp-medium) {
+                border-radius: $trim-small + 1px;
+            }
+        }
+
+        .card-opacity {
+            @include flex(center, center);
+            width: 100%;
+            max-width: 348px;
+            min-height: 486px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+
+            h2 {
+                @include text('', '', '', 700, 32px);
+                line-height: 40.22px;
+                text-shadow: 1px 0 $c-purple-02, -1px 0 $c-purple-02, 0 1px $c-purple-02, 0 -1px $c-purple-02,
+                    1px 1px $c-purple-02, -1px -1px $c-purple-02, 1px -1px $c-purple-02, -1px 1px $c-purple-02;
+            }
+
+            &:hover {
+                opacity: .85;
+            }
+
+            @include bp(max-width, $bp-medium) {
+                max-width: 100%;
+            }
+        }
+
+        @include bp(max-width, $bp-medium) {
+            flex-direction: column;
+            gap: $trim;
+        }
+    }
+}
